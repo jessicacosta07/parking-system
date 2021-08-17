@@ -9,10 +9,13 @@ interface Veiculo {
 
     function patio() {
 
-        function ler() {
-
+        function ler(): Veiculo[] {
+            return localStorage.patio ? JSON.parse(localStorage.patio) : [];
         }
-        function adicionar(veiculo: Veiculo) {
+        function salvar(veiculos: Veiculo[]) {
+            localStorage.setItem('patio', JSON.stringify(veiculos));
+        }
+        function adicionar(veiculo: Veiculo, salva?: Boolean) {
             const row = document.createElement("tr")
             row.innerHTML = `
             <td>${veiculo.nome}</td>
@@ -23,27 +26,30 @@ interface Veiculo {
             </td>
             `;
             $('#patio')?.appendChild(row);
+            if (salva) salvar([...ler(), veiculo])
         }
         function remover() {
 
         }
-        function salvar() {
-
-        }
         function render() {
-
-        }
+            $('#patio')!.innerHTML = '';
+            const patio = ler();
+            if (patio.length) {
+                patio.forEach(veiculo => adicionar(veiculo));
+            }
+        };
         return { ler, adicionar, remover, salvar, render }
     }
+    patio().render();
 
     $('#cadastrar')?.addEventListener("click", () => {
         const nome = $('#nome')?.value;
         const placa = $('#placa')?.value;
 
         if (!nome || !placa) {
-            alert('Os campos noma e placa são obrigatórios')
+            alert('Os campos nome e placa são obrigatórios')
             return;
         }
-        patio().adicionar({ nome, placa, entrada: new Date() })
+        patio().adicionar({ nome, placa, entrada: new Date() }, true)
     })
 })()
