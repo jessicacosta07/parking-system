@@ -58,6 +58,6 @@
             alert('Os campos nome e placa são obrigatórios');
             return;
         }
-        patio().adicionar({ nome, placa, entrada: new Date().toISOString }, true);
+        patio().adicionar({ nome, placa, entrada: new Date().toISOString() }, true);
     });
 })();
