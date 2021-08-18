@@ -9,6 +9,7 @@
 ![Typescript Badge](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
 ## Pages
-![image](https://user-images.githubusercontent.com/65916297/129814903-0e5c1e10-2655-4b80-8e39-a575fc8d195b.png)
+![image](https://user-images.githubusercontent.com/65916297/129948275-11a808cf-0b11-4e54-85ea-fc2491302d07.png)
+
 
 
